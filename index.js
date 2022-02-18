@@ -10,9 +10,10 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
 
+MONGODB_URL = "mongodb+srv://Muhammadkomail:1234567890@cluster0.1wv74.mongodb.net/Muhammadkomail?retryWrites=true&w=majority";
 
 mongoose.connect(
-  "mongodb+srv://Muhammadkomail:1234567890@cluster0.1wv74.mongodb.net/Muhammadkomail?retryWrites=true&w=majority",
+  MONGODB_URL,
   () => {
     console.log("DB Connected Successfully");
   }
