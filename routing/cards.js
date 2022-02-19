@@ -26,6 +26,7 @@ router.route('/add').post((request, response) => {
     const size = request.body.size;
     const weddingWear = request.body.weddingWear;
     const collections = request.body.collections;
+    const newArrival = request.body.newArrival;
 
     const newCards = new Cards({
         title,
@@ -45,6 +46,7 @@ router.route('/add').post((request, response) => {
         skuNumber,
         weddingWear,
         collections,
+        newArrival
     });
     newCards.save()
         .then(() => response.json('Card added!'))

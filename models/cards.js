@@ -20,6 +20,7 @@ const cardsSchema = new Schema(
         skuNumber: { type: String, required: true },
         weddingWear: { type: String },
         collections: { type: String },
+        newArrival: { type: String },
     },
     {
         timestamp: true,
