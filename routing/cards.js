@@ -12,7 +12,10 @@ router.route('/add').post((request, response) => {
     const description = request.body.description;
     const orignalPrice = request.body.orignalPrice;
     const discountPrice = request.body.discountPrice;
-    const imageUrl = request.body.imageUrl;
+    const imageUrl1 = request.body.imageUrl1;
+    const imageUrl2 = request.body.imageUrl2;
+    const imageUrl3 = request.body.imageUrl3;
+    const imageUrl4 = request.body.imageUrl4;
     const fabric = request.body.fabric;
     const availability = request.body.availability;
     const quantity = request.body.quantity;
@@ -29,7 +32,10 @@ router.route('/add').post((request, response) => {
         description,
         orignalPrice,
         discountPrice,
-        imageUrl,
+        imageUrl1,
+        imageUrl2,
+        imageUrl3,
+        imageUrl4,
         fabric,
         availability,
         quantity,
@@ -39,7 +45,6 @@ router.route('/add').post((request, response) => {
         skuNumber,
         weddingWear,
         collections,
-        size
     });
     newCards.save()
         .then(() => response.json('Card added!'))
@@ -69,16 +74,16 @@ router.route('/update/:id').post((request, response) => {
             card.orignalPrice = Number(request.body.orignalPrice);
             card.discountPrice = Number(request.body.discountPrice);
             card.imageUrl = Array(request.body.imageUrl);
+            card.imageUrl2 = Array(request.body.imageUrl2);
             card.fabric = request.body.fabric;           
             card.availability = request.body.availability;
             card.quantity = Number(request.body.quantity);
             card.category = request.body.category;
-            card.subCategory = Array(request.body.subCategory);
+            card.subCategory = request.body.subCategory;
             card.brand = request.body.brand;
             card.skuNumber = request.body.skuNumber;
             card.weddingWear = request.body.weddingWear;
             card.collections = request.body.collections;
-            card.size = Array(request.body.size);
             
 
             card.save()
