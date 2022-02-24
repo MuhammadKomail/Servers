@@ -28,7 +28,6 @@ const cardRouter = require('./routing/cards');
 app.use('/cards', cardRouter);
 
 
-
 // ====================================
 app.post('/api/register', async (req, res) => {
   console.log(req.body)
@@ -41,8 +40,8 @@ app.post('/api/register', async (req, res) => {
     })
     res.json({ status: 'ok' })
   } catch (err) {
-    res.json({ status: 'error', error: 'Duplicate email', err })
-
+    res.json({  err })
+    // status: 'error', error: 'Duplicate email',
   }
 })
 
@@ -52,7 +51,6 @@ app.post('/api/login', async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   })
-
   if (user) {
     const token = jwt.sign(
       {
@@ -61,41 +59,28 @@ app.post('/api/login', async (req, res) => {
       },
       'secret123'
     )
-    return res.json({ status: 'ok', user: token })
+    return res.json({ status: 'ok', user: token, id: user._id })
   } else {
     return res.json({ status: 'error', user: false })
   }
 })
 
 
-app.get('/api/quote', async (req, res) => {
-  const token = req.headers['x-access-token ']
-  try {
-    const decoded = jwt.verify(token, 'secret123')
-    const email = decoded.email
-    await User.find0ne({ email: email })
-    return res.json({ status: 'ok', quote: user.quote })
-  } catch (error) {
-    console.log(error)
-    res.json({ status: 'error', error: 'invalid token' })
-  }
+app.get('/', (request, response) => {
+  User.find()
+    .then(user => response.json(user))
+    .catch(err => response.status(400).json('Error: ' + err));
 })
 
-app.post('/api/quote', async (req, res) => {
-  const token = req.headers['x-access-token']
-  try {
-    const decoded = jwt.verify(token, 'secret123')
-    const email = decoded.email
-    await User.updateOne(
-      { email: email },
-      { $set: { quote: req.body.quote } }
-    )
-    return res.json({ status: 'ok' })
-  } catch (error) {
-    console.log(error)
-    res.json({ status: 'error', errot: 'invalid token' })
-  }
-})
+app.get('/:id', (request, response) => {
+  User.findById(request.params.id)
+    .then(user => response.json(user))
+    .catch(err => response.status(400).json('Error: ' + err));
+});
+
+
+
+
 // ====================================
 
 app.listen(port, () => {

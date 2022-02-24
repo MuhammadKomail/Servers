@@ -23,7 +23,6 @@ router.route('/add').post((request, response) => {
     const subCategory = request.body.subCategory;
     const brand = request.body.brand;
     const skuNumber = request.body.skuNumber;
-    const size = request.body.size;
     const weddingWear = request.body.weddingWear;
     const collections = request.body.collections;
     const newArrival = request.body.newArrival;
@@ -70,24 +69,25 @@ router.route('/:id').delete((request, response) => {
 router.route('/update/:id').post((request, response) => {
     Cards.findById(request.params.id)
         .then(card => {
-
             card.title = request.body.title;
             card.description = request.body.description;
-            card.orignalPrice = Number(request.body.orignalPrice);
-            card.discountPrice = Number(request.body.discountPrice);
-            card.imageUrl = Array(request.body.imageUrl);
-            card.imageUrl2 = Array(request.body.imageUrl2);
-            card.fabric = request.body.fabric;           
+            card.orignalPrice = request.body.orignalPrice;
+            card.discountPrice = request.body.discountPrice;
+            card.imageUrl1 = request.body.imageUrl1;
+            card.imageUrl2 = request.body.imageUrl2;
+            card.imageUrl3 = request.body.imageUrl3;
+            card.imageUrl4 = request.body.imageUrl4;
+            card.fabric = request.body.fabric;
             card.availability = request.body.availability;
-            card.quantity = Number(request.body.quantity);
+            card.quantity = request.body.quantity;
             card.category = request.body.category;
             card.subCategory = request.body.subCategory;
             card.brand = request.body.brand;
             card.skuNumber = request.body.skuNumber;
             card.weddingWear = request.body.weddingWear;
             card.collections = request.body.collections;
+            card.newArrival = request.body.newArrival;
             
-
             card.save()
                 .then(() => response.json('Cards updated!'))
                 .catch(err => response.status(400).json('Error: ' + err));
