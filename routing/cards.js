@@ -8,10 +8,13 @@ router.route('/').get((request, response) => {
 });
 
 router.route('/add').post((request, response) => {
+    
     const title = request.body.title;
     const description = request.body.description;
     const orignalPrice = request.body.orignalPrice;
     const discountPrice = request.body.discountPrice;
+    const dorignalPrice = request.body.dorignalPrice;
+    const ddiscountPrice = request.body.ddiscountPrice;
     const imageUrl1 = request.body.imageUrl1;
     const imageUrl2 = request.body.imageUrl2;
     const imageUrl3 = request.body.imageUrl3;
@@ -32,6 +35,8 @@ router.route('/add').post((request, response) => {
         description,
         orignalPrice,
         discountPrice,
+        dorignalPrice,
+        ddiscountPrice,
         imageUrl1,
         imageUrl2,
         imageUrl3,
@@ -66,6 +71,7 @@ router.route('/:id').delete((request, response) => {
         .catch(err => response.status(400).json('Error: ' + err));
 });
 
+
 router.route('/update/:id').post((request, response) => {
     Cards.findById(request.params.id)
         .then(card => {
@@ -73,6 +79,8 @@ router.route('/update/:id').post((request, response) => {
             card.description = request.body.description;
             card.orignalPrice = request.body.orignalPrice;
             card.discountPrice = request.body.discountPrice;
+            card.dorignalPrice = request.body.dorignalPrice;
+            card.ddiscountPrice = request.body.ddiscountPrice;
             card.imageUrl1 = request.body.imageUrl1;
             card.imageUrl2 = request.body.imageUrl2;
             card.imageUrl3 = request.body.imageUrl3;
