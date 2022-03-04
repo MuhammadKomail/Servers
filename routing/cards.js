@@ -13,8 +13,8 @@ router.route('/add').post((request, response) => {
     const description = request.body.description;
     const orignalPrice = request.body.orignalPrice;
     const discountPrice = request.body.discountPrice;
-    const dorignalPrice = request.body.dorignalPrice;
-    const ddiscountPrice = request.body.ddiscountPrice;
+    // const dorignalPrice = request.body.dorignalPrice;
+    // const ddiscountPrice = request.body.ddiscountPrice;
     const imageUrl1 = request.body.imageUrl1;
     const imageUrl2 = request.body.imageUrl2;
     const imageUrl3 = request.body.imageUrl3;
@@ -35,8 +35,8 @@ router.route('/add').post((request, response) => {
         description,
         orignalPrice,
         discountPrice,
-        dorignalPrice,
-        ddiscountPrice,
+        // dorignalPrice,
+        // ddiscountPrice,
         imageUrl1,
         imageUrl2,
         imageUrl3,
@@ -79,8 +79,8 @@ router.route('/update/:id').post((request, response) => {
             card.description = request.body.description;
             card.orignalPrice = request.body.orignalPrice;
             card.discountPrice = request.body.discountPrice;
-            card.dorignalPrice = request.body.dorignalPrice;
-            card.ddiscountPrice = request.body.ddiscountPrice;
+            // card.dorignalPrice = request.body.dorignalPrice;
+            // card.ddiscountPrice = request.body.ddiscountPrice;
             card.imageUrl1 = request.body.imageUrl1;
             card.imageUrl2 = request.body.imageUrl2;
             card.imageUrl3 = request.body.imageUrl3;
