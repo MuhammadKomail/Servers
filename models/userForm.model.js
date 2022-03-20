@@ -7,7 +7,7 @@ const UserForm = new mongoose.Schema(
 		lastName: { type: String, required: true},
 		Address: { type: String, required: true },
 		Country: { type: String, required: true },
-		Province: { type: String, required: true },
+		// Province: { type: String, required: true },
 		Phone: { type: Number, required: true},
 		Zip: { type: String, required: true },
 		City: { type: String, required: true },
