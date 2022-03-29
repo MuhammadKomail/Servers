@@ -103,4 +103,17 @@ router.route('/update/:id').post((request, response) => {
         .catch(err => response.status(400).json('Error: ' + err));
 });
 
+router.route('/updatequantity/:id').post((request, response) => {
+    Cards.findById(request.params.id)
+    .then(formData => {
+        formData.availability = request.body.availability;
+        formData.quantity = request.body.quantity;
+        formData.save()
+          .then(() => response.json('form Data updated!'))
+          .catch(err => response.status(400).json('Error: ' + err));
+      })
+      .catch(err => response.status(400).json('Error: ' + err));
+
+});
+
 module.exports = router;
